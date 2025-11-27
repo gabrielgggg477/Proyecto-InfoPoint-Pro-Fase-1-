@@ -11,6 +11,7 @@ public class LoginDialog extends JDialog {
     private int intentosFallidos = 0;
 
     public LoginDialog() {
+
         setTitle("Acceso al Sistema");
         setModal(true);
         setSize(320, 180);
@@ -22,6 +23,9 @@ public class LoginDialog extends JDialog {
         txtClave = new JPasswordField();
         btnEntrar = new JButton("Entrar");
         btnCancelar = new JButton("Cancelar");
+
+        btnEntrar.setMnemonic('E');
+        btnCancelar.setMnemonic('C');
 
         JPanel panel = new JPanel(new GridLayout(3, 2, 5, 5));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -55,8 +59,7 @@ public class LoginDialog extends JDialog {
             String rol = esAdmin ? "admin" : "usuario";
 
             dispose();
-            MainWindow ventana = new MainWindow(rol);
-            ventana.setVisible(true);
+            new MainWindow(rol).setVisible(true);
 
         } else {
             intentosFallidos++;
