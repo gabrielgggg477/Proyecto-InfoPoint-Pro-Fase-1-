@@ -1,0 +1,46 @@
+package InfoPoint.Formularios;
+
+import InfoPoint.modelos.*;
+
+import javax.swing.*;
+import javax.swing.event.*;
+import javax.swing.undo.UndoManager;
+import java.awt.*;
+
+public class FormAviso extends JDialog {
+
+    private JTextArea area;
+    private UndoManager undo;
+
+    public FormAviso(JFrame padre) {
+        super(padre, "Crear Aviso", true);
+
+        setSize(400, 300);
+        setLocationRelativeTo(padre);
+        setLayout(new BorderLayout());
+
+        area = new JTextArea();
+        undo = new UndoManager();
+        area.getDocument().addUndoableEditListener(undo);
+
+        JButton btnGuardar = new JButton("Guardar");
+        btnGuardar.addActionListener(e -> guardarAviso());
+
+        btnGuardar.setMnemonic('G');
+
+        add(new JScrollPane(area), BorderLayout.CENTER);
+        add(btnGuardar, BorderLayout.SOUTH);
+    }
+
+    private void guardarAviso() {
+        String texto = area.getText().trim();
+        if (texto.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El aviso no puede estar vacío.");
+            return;
+        }
+
+        DataStore.listaAvisos.add(new Aviso(texto));
+        JOptionPane.showMessageDialog(this, "Aviso guardado.");
+        dispose();
+    }
+}
