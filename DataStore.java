@@ -1,4 +1,4 @@
-package InfoPoint;
+package InfoPoint.modelos;
 
 import java.util.ArrayList;
 
