@@ -1,4 +1,4 @@
-package InfoPoint;
+package InfoPoint.modelos;
 
 public class Libro {
 
