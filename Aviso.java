@@ -1,4 +1,4 @@
-package InfoPoint;
+package InfoPoint.modelos;
 
 public class Aviso {
 
@@ -13,3 +13,4 @@ public class Aviso {
         return mensaje;
     }
 }
+
