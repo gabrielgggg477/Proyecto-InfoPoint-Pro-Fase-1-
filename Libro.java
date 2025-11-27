@@ -1,6 +1,9 @@
-package InfoPoint.modelos;
+package InfoPoint;
 
-public class Libro {
+import java.io.Serializable;
+
+public class Libro implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private String titulo;
     private String autor;
@@ -11,6 +14,14 @@ public class Libro {
         this.autor = autor;
         this.anio = anio;
     }
+
+    public String getTitulo() { return titulo; }
+    public String getAutor() { return autor; }
+    public int getAnio() { return anio; }
+
+    public void setTitulo(String t) { this.titulo = t; }
+    public void setAutor(String a) { this.autor = a; }
+    public void setAnio(int y) { this.anio = y; }
 
     @Override
     public String toString() {
